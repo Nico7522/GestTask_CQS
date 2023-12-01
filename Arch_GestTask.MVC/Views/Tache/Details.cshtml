@@ -1,0 +1,17 @@
+﻿@model Arch_GestTask.MVC.Models.Tache.TaskDisplayDetailsForm
+
+<h2>@Model.Title</h2>
+<h3>Description</h3>
+<p>@Model.Description</p>
+<h3>Tache en cours ?</h3>
+<p>@{
+	if(@Model.IsComplete){
+		@:Terminée
+	} else {
+		@:Oui
+	}
+}</p>
+
+<p><a asp-action="Edit" asp-route-id="@Model.TaskId" class="btn btn-outline-info">Editer</a></p>
+<p><a asp-action="Assign" asp-route-id="@Model.TaskId" class="btn btn-outline-info">Assigner une personne</a></p>
+<p><a asp-action="Complete" asp-route-id="@Model.TaskId" class="btn btn-outline-info">Cloturer la tache</a></p>

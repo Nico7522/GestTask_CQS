@@ -1,0 +1,19 @@
+﻿@model Arch_GestTask.MVC.Models.Tache.TaskUpdateForm
+
+<h2>Editer</h2>
+
+<form asp-action="Edit">
+
+	<div class="form-group">	
+		<label asp-for="Title" class="control-label">Titre</label>
+		<input type="text" asp-for="Title" class="form-control"/>
+		<span asp-validation-for="Title"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Description" class="control-label">Description</label>
+		<input type="text" asp-for="Description" class="form-control"></input>
+		<span asp-validation-for="Description"></span>
+	</div>
+
+	<input type="submit" value="Enregistrer" />
+</form>

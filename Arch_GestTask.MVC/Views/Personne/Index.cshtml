@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Arch_GestTask.MVC.Models.Personne.PersonDisplayForm>
+
+
+<h2>Liste des personnes</h2>
+<table class="table">
+	<tr>
+		<th>Id</th>
+		<th>Nom</th>
+		<th>Prénom</th>
+		<th>Détails</th>
+
+
+	</tr>
+@foreach(var person in Model){
+
+	<tr>
+		<td>@person.PersonId</td>
+		<td>@person.Name</td>
+		<td>@person.Surname</td>
+		<td><a asp-action="Details" asp-route-id="@person.PersonId" class="btn btn-outline-info">Details</a></td>
+
+	</tr>
+}
+
+</table>
+

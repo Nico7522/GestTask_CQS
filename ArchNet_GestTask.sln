@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tools.CQS", "Tools.CQS\Tool
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchNet_GetTask.Test", "ArchNet_GetTask.Test\ArchNet_GetTask.Test.csproj", "{E6E2FFB2-0C7A-47AB-BE86-4BDC9972898C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Arch_GestTask.MVC", "Arch_GestTask.MVC\Arch_GestTask.MVC.csproj", "{532968EC-D21D-4384-8882-D9AEB62160C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{E6E2FFB2-0C7A-47AB-BE86-4BDC9972898C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6E2FFB2-0C7A-47AB-BE86-4BDC9972898C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6E2FFB2-0C7A-47AB-BE86-4BDC9972898C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{532968EC-D21D-4384-8882-D9AEB62160C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{532968EC-D21D-4384-8882-D9AEB62160C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{532968EC-D21D-4384-8882-D9AEB62160C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{532968EC-D21D-4384-8882-D9AEB62160C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

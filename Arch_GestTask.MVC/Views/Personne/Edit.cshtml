@@ -1,0 +1,19 @@
+﻿@model Arch_GestTask.MVC.Models.Personne.UpdatePersonForm
+
+<h2>Editer</h2>
+
+<form asp-action="Edit">
+
+	<div class="form-group">	
+		<label asp-for="Name" class="control-label">Nom</label>
+		<input type="text" asp-for="Name" class="form-control"/>
+		<span asp-validation-for="Name"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Surname" class="control-label">Prénom</label>
+		<input type="text" asp-for="Surname" class="form-control"></input>
+		<span asp-validation-for="Surname"></span>
+	</div>
+
+	<input type="submit" value="Enregistrer" />
+</form>

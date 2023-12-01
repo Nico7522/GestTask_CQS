@@ -44,11 +44,11 @@ namespace ArchNet_GestTask.Domains.Services
             try
             {
                 _dbConnection.Open();
-                int isInserted = _dbConnection.ExecuteNonQuery("INSERT INTO Tache (Titre, [Description]) VALUES (@Titre, @Description)", parameters: command);
-                if (isInserted != 1)
+                int newTaskId = (int)_dbConnection.ExecuteScalar("INSERT INTO Tache (Titre, [Description]) OUTPUT inserted.Id VALUES (@Titre, @Description)", parameters: command);
+                if (newTaskId < 1)
                     return CommandResult.Failure("Erreur dans le nombre de ligne affectées");
 
-                return CommandResult.Success();
+                return CommandResult.Success(newTaskId);
             }
             catch (Exception ex)
             {
@@ -104,14 +104,13 @@ namespace ArchNet_GestTask.Domains.Services
                 _dbConnection.Open();
                 int isUpdated = _dbConnection.ExecuteNonQuery("UPDATE Tache SET PersonneId = @PersonneId WHERE Id = @Id", parameters: new {Id = command.Id, PersonneId = command.PersonId});
 
-                if (isUpdated != 1)
-                    return CommandResult.Failure("Erreur");
+              
 
                 return CommandResult.Success();
             }
             catch (Exception ex)
             {
-
+              
                 return CommandResult.Failure(ex.Message);
             }
         }

@@ -1,0 +1,24 @@
+﻿@model IEnumerable<Arch_GestTask.MVC.Models.Tache.TaskDisplayForm> 
+
+	<h2>Liste des Taches</h2>
+<table class="table">
+	<tr>
+		<th>Id</th>
+		<th>Titre</th>
+		<th>Description</th>
+		<th>Détails</th>
+
+
+	</tr>
+@foreach(var task in Model){
+
+	<tr>
+		<td>@task.TaskId</td>
+		<td>@task.Title</td>
+		<td>@task.Description</td>
+		<td><a asp-action="Details" asp-route-id="@task.TaskId" class="btn btn-outline-info">Details</a></td>
+
+	</tr>
+}
+
+</table>

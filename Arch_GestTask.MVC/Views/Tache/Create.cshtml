@@ -1,0 +1,18 @@
+﻿@model Arch_GestTask.MVC.Models.Tache.CreateTaskForm
+<h2>Créer une nouvelle tâche</h2>
+
+<form asp-action="Create">
+
+	<div class="form-group">	
+		<label asp-for="Title" class="control-label">Titre</label>
+		<input type="text" asp-for="Title" class="form-control"/>
+		<span asp-validation-for="Title"></span>
+	</div>
+	<div class="form-group">
+		<label asp-for="Description" class="control-label">Description</label>
+		<input type="text" asp-for="Description" class="form-control"></input>
+		<span asp-validation-for="Description"></span>
+	</div>
+
+	<input type="submit" value="Enregistrer" />
+</form>
