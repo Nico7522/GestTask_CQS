@@ -8,8 +8,13 @@ using Tools.CQS.Queries;
 
 namespace ArchNet_GestTask.Domains.Queries
 {
-    public class GetAllPersonneQuery : IQueryDefinition<IEnumerable<Personne>>
+    public class GetOnePersonQuery : IQueryDefinition<Personne>
     {
-      
+        public GetOnePersonQuery(int id)
+        {
+            Id = id;
+        }
+
+        public int Id { get; set; }
     }
 }

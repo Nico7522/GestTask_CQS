@@ -14,7 +14,8 @@ namespace ArchNet_GestTask.Domains.Repositories
     public interface IPersonneRepository :
         ICommandHandler<CreatePersonneCommand>,
         ICommandHandler<UpdatePersonneCommand>,
-        IQueryHandler<GetAllPersonneQuery, IEnumerable<Personne>>
+        IQueryHandler<GetAllPersonneQuery, IEnumerable<Personne>>,
+        IQueryHandler<GetOnePersonQuery, Personne>
     {
         
     }

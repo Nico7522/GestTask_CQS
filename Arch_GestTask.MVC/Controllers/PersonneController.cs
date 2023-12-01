@@ -53,14 +53,25 @@ namespace Arch_GestTask.MVC.Controllers
 
 
         // TODO
-        //public IActionResult Edit(int id)
-        //{
-  
-        //}
+        public IActionResult Edit(int id)
+        {
+            var response = _personRepository.Execute(new GetOnePersonQuery(id));
 
-        //public IActionResult Edit()
-        //{
-        //    return View();
-        //}
+            UpdatePersonForm person = response.Result.ToUpdatePerson();
+            if (response.IsSuccess)
+                return View(person);
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(UpdatePersonForm form, int id)
+        {
+            var response = _personRepository.Execute(new UpdatePersonneCommand(id, form.Name, form.Surname));
+            if (response.IsSuccess)
+                return RedirectToAction("Index");
+
+            return View();
+        }
     }
 }

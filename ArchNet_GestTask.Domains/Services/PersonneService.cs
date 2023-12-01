@@ -68,5 +68,19 @@ namespace ArchNet_GestTask.Domains.Services
                 return QueryResult<IEnumerable<Personne>>.Failure(ex.Message);
             }
         }
+
+        public QueryResult<Personne> Execute(GetOnePersonQuery query)
+        {
+            try
+            {
+                _dbConnection.Open();
+                return QueryResult<Personne>.Success(_dbConnection.ExecuteReader("SELECT * FROM Personne WHERE Id = @Id", record => record.ToPersonne(), parameters: new { Id = query.Id }).SingleOrDefault());
+            }
+            catch (Exception ex)
+            {
+
+                return QueryResult<Personne>.Failure(ex.Message);
+            }
+        }
     }
 }
