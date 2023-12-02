@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Arch_GestTask.MVC.Models.Tache.TaskWithPersonForm>
+
+<h2>Liste des Taches</h2>
+<table class="table">
+	<tr>
+		<th>Id</th>
+		<th>Titre</th>
+		<th>Description</th>
+		<th>Personne assignée</th>
+
+		<th>Détails</th>
+
+
+	</tr>
+	@foreach (var task in Model)
+	{
+
+		<tr>
+			<td>@task.TaskId</td>
+			<td>@task.Title</td>
+			<td>@task.Description</td>
+			<td>@(task.PersonId == null ? "Personne n'est assigné" : task.Name + " " + task.Surname)</td>
+
+			<td><a asp-action="Details" asp-route-id="@task.TaskId" class="btn btn-outline-info">Details</a></td>
+
+		</tr>
+	}
+
+</table>

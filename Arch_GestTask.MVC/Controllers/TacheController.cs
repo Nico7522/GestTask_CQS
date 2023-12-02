@@ -1,6 +1,7 @@
 ﻿using Arch_GestTask.MVC.Models.Mappers;
 using Arch_GestTask.MVC.Models.Tache;
 using ArchNet_GestTask.Domains.Commands;
+using ArchNet_GestTask.Domains.Entities;
 using ArchNet_GestTask.Domains.Queries;
 using ArchNet_GestTask.Domains.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +24,17 @@ namespace Arch_GestTask.MVC.Controllers
             if (response.IsSuccess && response.Result!.Count() > 0)
             {
                 List<TaskDisplayForm> tasks = response.Result!.Select(t => t.ToTaskDisplay()).ToList();
+                return View(tasks);
+            }
+            return View();
+        }
+
+        public IActionResult TacheEtPersonne()
+        {
+            var response = _taskRepository.Execute(new GetAllTaskWithPersonQuery());
+            if (response.IsSuccess && response.Result!.Count() > 0)
+            {
+                List<TaskWithPersonForm> tasks = response.Result.Select(t => t.ToTaskWithPerson()).ToList();
                 return View(tasks);
             }
             return View();

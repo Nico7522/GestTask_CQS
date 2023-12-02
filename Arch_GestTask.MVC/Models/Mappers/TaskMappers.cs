@@ -1,4 +1,5 @@
 ﻿using Arch_GestTask.MVC.Models.Tache;
+using ArchNet_GestTask.Domains.Entities;
 using TaskDomain = ArchNet_GestTask.Domains.Entities.Task;
 
 namespace Arch_GestTask.MVC.Models.Mappers
@@ -41,6 +42,11 @@ namespace Arch_GestTask.MVC.Models.Mappers
                 Description = task.Description,
             
             };
+        }
+
+        internal static TaskWithPersonForm ToTaskWithPerson(this TaskWithPerson task)
+        {
+            return new TaskWithPersonForm(task.TaskId, task.Title, task.Description, task.IsCompleted, task.PersonneId, task.Name, task.Surname);
         }
     }
 }

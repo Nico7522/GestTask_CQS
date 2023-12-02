@@ -134,5 +134,19 @@ namespace ArchNet_GestTask.Domains.Services
                 return CommandResult.Failure(ex.Message);
             }
         }
+
+        public QueryResult<IEnumerable<TaskWithPerson>> Execute(GetAllTaskWithPersonQuery query)
+        {
+            try
+            {
+                _dbConnection.Open();
+                string dbQuery = "SELECT * FROM Tache t LEFT JOIN Personne p ON t.PersonneId = p.Id;";
+                return QueryResult<IEnumerable<TaskWithPerson>>.Success(_dbConnection.ExecuteReader(dbQuery, (t => t.ToTaskWithPerson())));
+            }
+            catch (Exception ex)
+            {
+                return QueryResult<IEnumerable<TaskWithPerson>>.Failure(ex.Message);
+            }
+        }
     }
 }

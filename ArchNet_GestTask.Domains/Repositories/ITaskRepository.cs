@@ -8,10 +8,16 @@ using System.Threading.Tasks;
 using Tools.CQS.Queries;
 using Tools.CQS.Commands;
 using ArchNet_GestTask.Domains.Commands;
+using TaskWithPersonModel = ArchNet_GestTask.Domains.Entities.TaskWithPerson;
 
 namespace ArchNet_GestTask.Domains.Repositories
 {
-    public interface ITaskRepository : IQueryHandler<GetAllTaskQuery, IEnumerable<TaskModel>>, IQueryHandler<GetOneTaskQuery, TaskModel>, ICommandHandler<CreateTaskCommand>, ICommandHandler<UpdateTaskCommand>, ICommandHandler<AssignTaskCommand>, ICommandHandler<FinishTaskCommand>
+    public interface ITaskRepository : IQueryHandler<GetAllTaskQuery, 
+        IEnumerable<TaskModel>>, 
+        IQueryHandler<GetOneTaskQuery, TaskModel>,
+        ICommandHandler<CreateTaskCommand>, ICommandHandler<UpdateTaskCommand>,
+        ICommandHandler<AssignTaskCommand>, ICommandHandler<FinishTaskCommand>,
+        IQueryHandler<GetAllTaskWithPersonQuery, IEnumerable<TaskWithPersonModel>>
     {
     }
 }
