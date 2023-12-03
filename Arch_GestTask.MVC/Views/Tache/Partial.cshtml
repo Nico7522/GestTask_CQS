@@ -1,3 +1,10 @@
-﻿@model Arch_GestTask.MVC.Models.Tache.TaskDisplayDetailsForm
+﻿@model Arch_GestTask.MVC.Models.Tache.TaskDisplayForm
 
-<p>@Model.TaskId</p>
+<tr>
+	<td>@Model.TaskId</td>
+	<td>@Model.Title</td>
+	<td>@Model.Description</td>
+	<td><a asp-action="Details" asp-route-id="@Model.TaskId" class="btn btn-outline-info">Details</a></td>
+
+
+</tr>

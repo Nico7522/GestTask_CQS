@@ -14,15 +14,8 @@
 	</tr>
 @foreach(var task in Model){
 
-	<tr>
-		<td>@task.TaskId</td>
-		<td>@task.Title</td>
-		<td>@task.Description</td>
-		<td><a asp-action="Details" asp-route-id="@task.TaskId" class="btn btn-outline-info">Details</a></td>
-			<td>@Html.Partial("Partial", new ViewDataDictionary(ViewData){ { "TaskId", task.TaskId } })</td>
+	@Html.Partial("Partial", task)
 
-
-	</tr>
 }
 
 </table>
