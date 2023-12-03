@@ -2,12 +2,12 @@
 
 <h2>Choisissez une personne à assigner</h2>
 
-<form asp-action="Assign">
+<form asp-action="Assign" class="form-assign">
 
-	<select asp-for="@Model.PersonId" asp-items="@(new SelectList(Model.People, nameof(Arch_GestTask.MVC.Models.Personne.PersonDisplayForm.PersonId), nameof(Arch_GestTask.MVC.Models.Personne.PersonDisplayForm.Name)))">
+	<select class="form-select form-select-lg mb-3" asp-for="@Model.PersonId" asp-items="@(new SelectList(Model.People, nameof(Arch_GestTask.MVC.Models.Personne.PersonDisplayForm.PersonId), nameof(Arch_GestTask.MVC.Models.Personne.PersonDisplayForm.Name)))">
 
 		<option>Choisissez une personne</option>
 
 	</select>
-	<input class="btn btn-primary" type="submit" value="Submit" />
+	<input class="btn btn-primary " type="submit" value="Assigner" />
 </form>

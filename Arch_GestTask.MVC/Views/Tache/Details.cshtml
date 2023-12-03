@@ -1,17 +1,28 @@
 ﻿@model Arch_GestTask.MVC.Models.Tache.TaskDisplayDetailsForm
 
-<h2>@Model.Title</h2>
-<h3>Description</h3>
-<p>@Model.Description</p>
-<h3>Tache en cours ?</h3>
-<p>@{
-	if(@Model.IsComplete){
-		@:Terminée
-	} else {
-		@:Oui
-	}
-}</p>
 
-<p><a asp-action="Edit" asp-route-id="@Model.TaskId" class="btn btn-outline-info">Editer</a></p>
-<p><a asp-action="Assign" asp-route-id="@Model.TaskId" class="btn btn-outline-info">Assigner une personne</a></p>
-<p><a asp-action="Complete" asp-route-id="@Model.TaskId" class="btn btn-outline-info">Cloturer la tache</a></p>
+<div class="card" style="width: 50%;">
+    <div class="card-body">
+        <h3 class="card-title">@Model.Title</h3>
+        <h4 class="card-subtitle mb-2 text-body-secondary">Description</h4>
+        <p class="card-text">@Model.Description.</p>
+		<p>
+			@{
+				if (@Model.IsComplete)
+				{
+					@:Terminée
+				}
+				else
+				{
+					@:Oui
+				}
+			}
+		</p>
+		<div class="d-xl-inline-flex">
+            <p class="m-lg-1"><a asp-action="Edit" asp-route-id="@Model.TaskId" class="btn btn-outline-info card-link">Editer</a></p>
+            <p class="m-lg-1"><a asp-action="Assign" asp-route-id="@Model.TaskId" class="btn btn-outline-info card-link">Assigner une personne</a></p>
+            <p class="m-lg-1"><a asp-action="Complete" asp-route-id="@Model.TaskId" class="btn btn-outline-info card-link">Cloturer la tache</a></p>
+
+		</div>
+    </div>
+</div>

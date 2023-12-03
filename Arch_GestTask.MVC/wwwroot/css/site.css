@@ -16,3 +16,36 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.mycolor {
+    color: cornflowerblue !important;
+}
+
+h2 {
+    text-align: center;
+}
+
+.card {
+    margin: 20px auto;
+    text-align: center;
+}
+
+.form-assign {
+    width: 70%;
+    margin: auto;
+    text-align: center
+}
+
+.form-assign > input[type=submit] {
+    width: 20%;
+    text-align: center;
+    margin: auto !important;
+}
+
+.form-select {
+    text-align: center;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+}
+

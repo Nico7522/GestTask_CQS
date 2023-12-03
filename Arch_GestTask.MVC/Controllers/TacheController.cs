@@ -5,6 +5,7 @@ using ArchNet_GestTask.Domains.Entities;
 using ArchNet_GestTask.Domains.Queries;
 using ArchNet_GestTask.Domains.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Arch_GestTask.MVC.Controllers
 {
@@ -38,6 +39,14 @@ namespace Arch_GestTask.MVC.Controllers
                 return View(tasks);
             }
             return View();
+        }
+
+        public IActionResult PartialPersonne()
+        {
+            return new PartialViewResult()
+            {
+                ViewName = "PartialPersonne"
+            };
         }
 
         public IActionResult Details(int id)
@@ -122,5 +131,19 @@ namespace Arch_GestTask.MVC.Controllers
 
         return View(form);
         }
+
+        public IActionResult Partial(int id) 
+        {
+			var response = _taskRepository.Execute(new GetOneTaskQuery(id));
+			if (response.IsSuccess && response.Result != null)
+			{
+				TaskDisplayDetailsForm task = response.Result.ToTaskDisplayDetail();
+                return PartialView(task);
+			}
+			return new PartialViewResult
+			{
+				ViewName = "Partial",
+			};
+		}
     }
 }

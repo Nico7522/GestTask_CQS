@@ -7,6 +7,8 @@
 		<th>Titre</th>
 		<th>Description</th>
 		<th>Détails</th>
+		<th>ID Task</th>
+		
 
 
 	</tr>
@@ -17,6 +19,8 @@
 		<td>@task.Title</td>
 		<td>@task.Description</td>
 		<td><a asp-action="Details" asp-route-id="@task.TaskId" class="btn btn-outline-info">Details</a></td>
+			@* <td>@Html.Partial("Partial", task.TaskId )</td> *@
+
 
 	</tr>
 }

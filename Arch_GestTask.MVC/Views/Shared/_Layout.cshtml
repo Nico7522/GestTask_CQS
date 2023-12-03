@@ -10,7 +10,41 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: lightgrey;">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Task</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link mycolor" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link mycolor" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle mycolor" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Tâches et personnes
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li> <a class="nav-link text-dark border-bottom" asp-area="" asp-controller="Personne" asp-action="Index">Liste des personnes</a></li>
+                                <li> <a class="nav-link text-dark border-bottom" asp-area="" asp-controller="Tache" asp-action="Index">Liste des Taches</a></li>
+                                <li><a class="nav-link text-dark" asp-area="" asp-controller="Tache" asp-action="TacheEtPersonne">Liste des Taches avec les personnes assignées</a></li>
+                            
+                            </ul>
+                        </li>
+                    
+                    </ul>
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+@*         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Arch_GestTask.MVC</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -38,7 +72,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> *@
     </header>
     <div class="container">
         <main role="main" class="pb-3">

@@ -19,11 +19,9 @@
 			<td>@task.TaskId</td>
 			<td>@task.Title</td>
 			<td>@task.Description</td>
-			<td>@(task.PersonId == null ? "Personne n'est assigné" : task.Name + " " + task.Surname)</td>
-
+			<td>@(task.PersonId == null ? "Personne n'est assigné" : @Html.Partial("PartialPersonne", task.Name + " " + task.Surname))</td>
 			<td><a asp-action="Details" asp-route-id="@task.TaskId" class="btn btn-outline-info">Details</a></td>
 
 		</tr>
 	}
-
 </table>
