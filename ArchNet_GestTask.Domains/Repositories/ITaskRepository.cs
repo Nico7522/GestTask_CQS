@@ -17,7 +17,8 @@ namespace ArchNet_GestTask.Domains.Repositories
         IQueryHandler<GetOneTaskQuery, TaskModel>,
         ICommandHandler<CreateTaskCommand>, ICommandHandler<UpdateTaskCommand>,
         ICommandHandler<AssignTaskCommand>, ICommandHandler<FinishTaskCommand>,
-        IQueryHandler<GetAllTaskWithPersonQuery, IEnumerable<TaskWithPersonModel>>
+        IQueryHandler<GetAllTaskWithPersonQuery, IEnumerable<TaskWithPersonModel>>,
+        IQueryHandler<GetTaskByPersonQuery, IEnumerable<TaskModel>>
     {
     }
 }

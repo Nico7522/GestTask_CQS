@@ -2,6 +2,7 @@
 using Arch_GestTask.MVC.Models.Personne;
 using Arch_GestTask.MVC.Models.Tache;
 using ArchNet_GestTask.Domains.Commands;
+using TaskModel = ArchNet_GestTask.Domains.Entities.Task;
 using ArchNet_GestTask.Domains.Queries;
 using ArchNet_GestTask.Domains.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,12 @@ namespace Arch_GestTask.MVC.Controllers
     public class PersonneController : Controller
     {
         private readonly IPersonneRepository _personRepository;
+        private readonly ITaskRepository _taskRepository;
 
-        public PersonneController(IPersonneRepository taskRepository)
+        public PersonneController(IPersonneRepository personRepository, ITaskRepository taskRepository)
         {
-            _personRepository = taskRepository;
+            _personRepository = personRepository;
+            _taskRepository = taskRepository;
         }
 
         public IActionResult Index()
@@ -73,5 +76,28 @@ namespace Arch_GestTask.MVC.Controllers
 
             return View();
         }
+
+        public IActionResult PersonneEtTache()
+        {
+			var response = _personRepository.Execute(new GetAllPersonneQuery());
+			if (response.IsSuccess && response.Result!.Count() > 0)
+			{
+				List<PersonneEtTacheDisplayForm> people = response.Result.Select(p => p.ToPersonEtTaskDisplay()).ToList();
+
+                foreach (var item in people)
+                {
+					var taskResponse = _taskRepository.Execute(new GetTaskByPersonQuery(item.PersonId));
+                    foreach (var task in taskResponse.Result)
+                    {
+                    item.Tasks.Add(task.ToTaskDisplayDetail());
+                        
+                    }
+                };
+                return View(people);
+
+			}
+
+			return View();
+		}
     }
 }

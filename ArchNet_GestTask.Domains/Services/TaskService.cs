@@ -148,5 +148,19 @@ namespace ArchNet_GestTask.Domains.Services
                 return QueryResult<IEnumerable<TaskWithPerson>>.Failure(ex.Message);
             }
         }
-    }
+
+		public QueryResult<IEnumerable<TaskModel>> Execute(GetTaskByPersonQuery query)
+		{
+			try
+			{
+				_dbConnection.Open();
+				return QueryResult<IEnumerable<TaskModel>>.Success(_dbConnection.ExecuteReader("SELECT Id, Titre, [Description], Cloturee, PersonneId FROM Tache WHERE PersonneId = @Id;", record => record.ToTask(), parameters: new { Id = query.PersonId }));
+			}
+			catch (Exception ex)
+			{
+				return QueryResult<IEnumerable<TaskModel>>.Failure("Erreur" + ex.Message);
+			}
+
+		}
+	}
 }

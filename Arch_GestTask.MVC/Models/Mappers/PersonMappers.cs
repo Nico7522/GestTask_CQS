@@ -13,7 +13,12 @@ namespace Arch_GestTask.MVC.Models.Mappers
             return new PersonDisplayForm(person.Id, person.Nom, person.Prenom);
         }
 
-        internal static CreatePersonneCommand ToCreatePersonneDomaine(this CreatePersonForm person)
+		internal static PersonneEtTacheDisplayForm ToPersonEtTaskDisplay(this PersonDomain person)
+		{
+			return new PersonneEtTacheDisplayForm(person.Id, person.Nom, person.Prenom);
+		}
+
+		internal static CreatePersonneCommand ToCreatePersonneDomaine(this CreatePersonForm person)
         {
             return new CreatePersonneCommand(person.Name, person.Surname);
         }
