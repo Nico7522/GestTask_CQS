@@ -19,7 +19,7 @@
 		<td>@task.Title</td>
 		<td>@task.Description</td>
 		<td><a asp-action="Details" asp-route-id="@task.TaskId" class="btn btn-outline-info">Details</a></td>
-			@* <td>@Html.Partial("Partial", task.TaskId )</td> *@
+			<td>@Html.Partial("Partial", new ViewDataDictionary(ViewData){ { "TaskId", task.TaskId } })</td>
 
 
 	</tr>

@@ -132,18 +132,23 @@ namespace Arch_GestTask.MVC.Controllers
         return View(form);
         }
 
-        public IActionResult Partial(int id) 
+        public IActionResult Partial() 
         {
-			var response = _taskRepository.Execute(new GetOneTaskQuery(id));
-			if (response.IsSuccess && response.Result != null)
+			if (ViewData.ContainsKey("TaskId") && ViewData["TaskId"] is int taskId)
 			{
-				TaskDisplayDetailsForm task = response.Result.ToTaskDisplayDetail();
-                return PartialView(task);
+
+				var response = _taskRepository.Execute(new GetOneTaskQuery(taskId));
+				if (response.IsSuccess && response.Result != null)
+				{
+					TaskDisplayDetailsForm task = response.Result.ToTaskDisplayDetail();
+					return PartialView(task);
+				}
+
 			}
 			return new PartialViewResult
 			{
 				ViewName = "Partial",
 			};
 		}
-    }
+	}
 }
