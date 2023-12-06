@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Arch_GestTask.MVC.Models.Personne.PersonneEtTacheDisplayForm>
+
+
+<div class="container text-center row align-items-start row">
+
+    @foreach (var p in Model)
+    {
+        <div class="d-flex flex-column mb-3 mt-3 border" style="max-width: 18rem; height: 200px">
+            <div class="text-center text-uppercase fs-3 fw-bold">@p.Name @p.Surname</div>
+                <div class="card-body text-primary mh-100">
+                    <h5 class="card-title">Tâches :</h5>
+            @if (p.Tasks.Count() > 0)
+            {
+                @foreach (var t in p.Tasks)
+                {
+                    <Partial name="PartialTask" model="t" />
+
+                }
+            }
+            else
+            {
+                <p>Aucune tâche</p>
+            }
+
+        </div>
+    </div>
+}
+
+</div>
+
+

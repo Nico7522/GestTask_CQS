@@ -14,6 +14,7 @@ namespace Arch_GestTask.MVC.Models.Personne
 			_personId = personId;
 			_name = name;
 			_surname = surname;
+			_tasks = new List<TaskDisplayDetailsForm>();
 		}
 		
 		public int PersonId { get => _personId; set => _personId = value; }

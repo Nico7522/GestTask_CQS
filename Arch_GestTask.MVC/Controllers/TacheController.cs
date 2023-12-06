@@ -150,5 +150,6 @@ namespace Arch_GestTask.MVC.Controllers
 				ViewName = "Partial",
 			};
 		}
+
 	}
 }

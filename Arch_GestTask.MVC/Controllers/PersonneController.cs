@@ -86,10 +86,15 @@ namespace Arch_GestTask.MVC.Controllers
 
                 foreach (var item in people)
                 {
-					var taskResponse = _taskRepository.Execute(new GetTaskByPersonQuery(item.PersonId));
+                    var taskResponse = _taskRepository.Execute(new GetTaskByPersonQuery(item.PersonId));
+                    if (taskResponse.Result != null)
+                    {
                     foreach (var task in taskResponse.Result)
                     {
-                    item.Tasks.Add(task.ToTaskDisplayDetail());
+                            item.Tasks.Add(task.ToTaskDisplayDetail());
+                                
+                        
+                    }
                         
                     }
                 };
@@ -99,5 +104,12 @@ namespace Arch_GestTask.MVC.Controllers
 
 			return View();
 		}
+        public IActionResult PartialTask()
+        {
+            return new PartialViewResult
+            {
+                ViewName = "_PartialTask"
+            };
+        }
     }
 }

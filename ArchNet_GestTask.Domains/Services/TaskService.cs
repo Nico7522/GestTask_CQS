@@ -153,7 +153,7 @@ namespace ArchNet_GestTask.Domains.Services
 		{
 			try
 			{
-				_dbConnection.Open();
+				//_dbConnection.Open();
 				return QueryResult<IEnumerable<TaskModel>>.Success(_dbConnection.ExecuteReader("SELECT Id, Titre, [Description], Cloturee, PersonneId FROM Tache WHERE PersonneId = @Id;", record => record.ToTask(), parameters: new { Id = query.PersonId }));
 			}
 			catch (Exception ex)
